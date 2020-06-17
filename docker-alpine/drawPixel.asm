@@ -1,3 +1,6 @@
+global  _start
+
+_start:
 ;Set video mode
 mov ax, 4f02h
 mov bx, 105h

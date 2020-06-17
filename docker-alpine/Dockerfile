@@ -6,4 +6,4 @@ RUN apk add alpine-sdk
 
 
 
-COPY drawPixel.asm drawPixel.asm
+COPY *.asm asm/
