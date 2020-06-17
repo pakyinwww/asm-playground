@@ -1,4 +1,4 @@
-# qemu-x86
+# Playground for qemu-x86
 
 This repo contains the assembly code without OS system call.
 
