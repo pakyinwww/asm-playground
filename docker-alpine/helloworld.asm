@@ -1,18 +1,18 @@
-; ----------------------------------------------------------------------------
-; helloworld.asm
-;
-; This is a Win32 console program that writes "Hello, World" on one line and
-; then exits.  It needs to be linked with a C library.
-; ----------------------------------------------------------------------------
+global _start
 
-    global  _start
-    extern  _printf
+section .text
 
-    section .text
 _start:
-    push    message
-    call    _printf
-    add     esp, 4
-    ret
-message:
-    db  'Hello, World', 10, 0
+  mov rax, 1        ; write(
+  mov rdi, 1        ;   STDOUT_FILENO,
+  mov rsi, msg      ;   "Hello, world!\n",
+  mov rdx, msglen   ;   sizeof("Hello, world!\n")
+  syscall           ; );
+
+  mov rax, 60       ; exit(
+  mov rdi, 0        ;   EXIT_SUCCESS
+  syscall           ; );
+
+section .rodata
+  msg: db "Hello, world!", 10
+  msglen: equ $ - msg
